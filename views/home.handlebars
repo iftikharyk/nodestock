@@ -1,2 +1,76 @@
-<h1>Handlebar home page heading</h1>
-<p>{{ stock }}</p>
+<div class="jumbotron">
+  <h1 class="display-4">Hello, world!</h1>
+  <p class="lead">This is a simple node webapp that uses IEX Cloud api and get the price of stocks of the companies.</p>
+  
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="text-center pt-3 pb-3">{{ stock.companyName }} ( {{ stock.symbol }} )</h1>
+        <hr class="my-4">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card alert-success p-3">
+            <p class="text-center card-title">Latest Price</p>
+            <h6 class=" card-subtitle mb-2 text-muted text-center">${{ stock.latestPrice }}</h6>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card alert-success p-3">
+            <p class="text-center card-title">Previous Close</p>
+            <h6 class=" card-subtitle mb-2 text-muted text-center">${{ stock.previousClose }}</h6>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card alert-success p-3">
+            <p class="text-center card-title">Percent Change</p>
+            <h6 class=" card-subtitle mb-2 text-muted text-center">{{ stock.changePercent }}%</h6>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card alert-success p-3">
+            <p class="text-center card-title">Market Cap</p>
+            <h6 class=" card-subtitle mb-2 text-muted text-center">${{ stock.marketCap }}</h6>
+        </div>
+    </div>
+</div>
+
+<br/>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card alert-success p-3">
+            <p class="text-center card-title">YTD Change</p>
+            <h6 class=" card-subtitle mb-2 text-muted text-center">{{ stock.ytdChange }}</h6>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card alert-success p-3">
+            <p class="text-center card-title">52 Week High</p>
+            <h6 class=" card-subtitle mb-2 text-muted text-center">{{ stock.week52High }}%</h6>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card alert-success p-3">
+            <p class="text-center card-title">52 week Low</p>
+            <h6 class=" card-subtitle mb-2 text-muted text-center">${{ stock.week52Low }}</h6>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card alert-success p-3">
+            <p class="text-center card-title">PE Ratio</p>
+            <h6 class=" card-subtitle mb-2 text-muted text-center">{{ stock.peRatio }}</h6>
+        </div>
+    </div>
+</div>
+
+
+<!--
+{{#each stock}}
+    {{ @key }} | {{ this }} <br/>
+{{/each}}
+
+<br/> -->
