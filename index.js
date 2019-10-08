@@ -11,15 +11,12 @@ app.engine('handlebars', exshbs());
 app.set('view engine', 'handlebars');
 
 // Api key (public) pk_dbab12835ccf488daff61bba25814ee1
-function callApi() {
+function callApi(finishedApi) {
     request('https://cloud.iexapis.com/stable/stock/fb/quote?token=pk_dbab12835ccf488daff61bba25814ee1', { json: true }, (err, res, body) => {
-        if (err) {
-            return console.log(err);
-        }
+        if (err) { return console.log(err); }
     
         if (res.statusCode === 200) {
-            console.log(body);
-            return body;
+            finishedApi(body);
         } else {
             console.log(res.statusCode);
         }
@@ -29,10 +26,14 @@ function callApi() {
 
 // Set handlebar routes
 app.get('/', function(req, res) {
-    const api = callApi();
-    res.render('home', {
-        stock: api
+
+    // Adding callback function
+    callApi(function(doneApi) {
+        res.render('home', {
+            stock: doneApi
+        });
     });
+
 });
 
 app.get('/about.html', function(req, res) {
